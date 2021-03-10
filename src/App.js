@@ -1,6 +1,9 @@
-const numeros = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+import { useState } from "react";
+
+const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 function App() {
+  const [numeros, setNumeros] = useState(numerosApi);
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
