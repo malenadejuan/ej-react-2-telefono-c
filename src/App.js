@@ -11,14 +11,6 @@ function App() {
     e.preventDefault();
     e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
   };
-  /*
-    const toggleLlamarColgar = useEffect((e) => {
-        if (llamando === true) {
-          console.log("Estoy llamando");
-        } else {
-          console.log("ya no estoy llamando");
-        }
-      }, [llamando]); */
 
   return (
     <div className="contenedor">
