@@ -20,6 +20,7 @@ function App() {
   const colgarAuto = useEffect(() => {
     if (llamando === true) {
       setTimeout(() => setLlamando(false), 5000);
+
     }
   }, [llamando]);
 
@@ -34,9 +35,9 @@ function App() {
             {
               numeros.map(numero =>
                 <li key={numero} className="numeros">
-                  <button onClick={() => marcarNumero()}>{numero}</button></li>)
+                  <button disabled={llamando} onClick={() => marcarNumero()}>{numero}</button></li>)
             }
-            <li><button className="big">borrar</button></li>
+            <li><button disabled={llamando} className="big">borrar</button></li>
           </ol>
         </div>
         <div className="acciones">
