@@ -11,6 +11,11 @@ function App() {
     e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
   };
 
+  const marcarNumero = () => {
+    console.log("jola");
+  };
+
+
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
@@ -18,7 +23,11 @@ function App() {
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
-            {numeros.map(numero => <li key={numero} className="numeros"><button>{numero}</button></li>)}
+            {
+              numeros.map(numero =>
+                <li key={numero} className="numeros">
+                  <button onClick={() => marcarNumero()}>{numero}</button></li>)
+            }
             <li><button className="big">borrar</button></li>
           </ol>
         </div>
