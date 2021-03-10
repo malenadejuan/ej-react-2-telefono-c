@@ -11,11 +11,18 @@ function App() {
     e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
   };
 
+
+  const marcarNumero = () => {
+    console.log("hola");
+  };
+
+
   const colgarAuto = useEffect(() => {
     if (llamando === true) {
       setTimeout(() => setLlamando(false), 5000);
     }
   }, [llamando]);
+
 
   return (
     <div className="contenedor">
@@ -24,7 +31,11 @@ function App() {
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
-            {numeros.map(numero => <li key={numero} className="numeros"><button>{numero}</button></li>)}
+            {
+              numeros.map(numero =>
+                <li key={numero} className="numeros">
+                  <button onClick={() => marcarNumero()}>{numero}</button></li>)
+            }
             <li><button className="big">borrar</button></li>
           </ol>
         </div>
