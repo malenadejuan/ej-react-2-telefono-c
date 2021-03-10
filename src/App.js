@@ -15,7 +15,7 @@ function App() {
   const marcarNumero = () => {
     console.log("hola");
   };
-
+  const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
   const colgarAuto = useEffect(() => {
     if (llamando === true) {
@@ -43,7 +43,7 @@ function App() {
           <span className="numero">667359961</span>
           {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
                 <!-- el número de teléfono tiene 9 cifras --> */}
-          <a href="llamar" className={`llamar${llamando ? " off" : ""}`} onClick={llamarOColgar}>Llamar</a>
+          <a href="llamar" className={`llamar${llamando ? " off" : ""}${activoSiTiene9("234234234")}`} onClick={llamarOColgar}>Llamar</a>
           {/*  <!-- Sólo se tiene que ver un botón u otro --> */}
           <a href="colgar" className={`colgar activo${llamando ? "" : " off"}`} onClick={llamarOColgar}>Colgar</a>
         </div>
