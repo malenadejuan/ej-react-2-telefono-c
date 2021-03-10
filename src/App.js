@@ -4,6 +4,7 @@ const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 function App() {
   const [numeros, setNumeros] = useState(numerosApi);
+
   const [llamando, setLlamando] = useState(false);
 
   const llamarOColgar = (e) => {
@@ -18,7 +19,7 @@ function App() {
 
   const marcarNumero = () => {
     console.log("hola");
-  };
+  
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
   /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
@@ -38,24 +39,23 @@ function App() {
             {
               numeros.map(numero =>
                 <li key={numero} className="numeros">
-                  <button disabled={llamando} onClick={() => marcarNumero()}>{numero}</button></li>)
+                  <button disabled={llamando} onClick={() => marcarDigito(numero)}>{numero}</button></li>)
             }
-            <li><button disabled={llamando} className="big">borrar</button></li>
+            <li><button disabled={llamando} onClick={borraNumero} className="big">borrar</button></li>
           </ol>
         </div>
         <div className="acciones">
-          <span className="numero">667359961</span>
-          {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
+          <span className="numero">{numero}</span>
+    {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
                 <!-- el número de teléfono tiene 9 cifras --> */}
-          {llamando ?
-            <a href="colgar" className="colgar activo" onClick={llamarOColgar}>Colgar</a> :
-            <a href="llamar" className={`llamar${activoSiTiene9("234234234")}`} onClick={llamarOColgar}>Llamar</a>
-          }
+          <a href="llamar" className={`llamar${llamando ? " off" : ""}${activoSiTiene9(numero)}`} onClick={llamarOColgar}>Llamar</a>
           {/*  <!-- Sólo se tiene que ver un botón u otro --> */}
+          <a href="colgar" className={`colgar activo${llamando ? "" : " off"}`} onClick={llamarOColgar}>Colgar</a>
         </div>
       </main>
     </div >
   );
 }
+
 
 export default App;
