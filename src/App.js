@@ -9,17 +9,25 @@ function App() {
 
   const llamarOColgar = (e) => {
     e.preventDefault();
-    e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
+    if (e.target.className.includes("llamar")) {
+      setLlamando(true);
+      setTimeout(() => setLlamando(false), 5000);
+    } else {
+      setLlamando(false);
+    }
   };
 
+  const marcarNumero = () => {
+    console.log("hola");
+  
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
-  const colgarAuto = useEffect(() => {
-    if (llamando === true) {
-      setTimeout(() => setLlamando(false), 5000);
-
-    }
-  }, [llamando]);
+  /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
+  /*  const colgarAuto = useEffect(() => {
+     if (llamando === true) {
+       setTimeout(() => setLlamando(false), 5000);
+     }
+   }, [llamando]); */
 
   return (
     <div className="contenedor">
@@ -31,14 +39,14 @@ function App() {
             {
               numeros.map(numero =>
                 <li key={numero} className="numeros">
-                  <button disabled={llamando} onClick={() => agnadeDigito(numero)}>{numero}</button></li>)
+                  <button disabled={llamando} onClick={() => marcarDigito(numero)}>{numero}</button></li>)
             }
             <li><button disabled={llamando} onClick={borraNumero} className="big">borrar</button></li>
           </ol>
         </div>
         <div className="acciones">
           <span className="numero">{numero}</span>
-          {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
+    {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
                 <!-- el número de teléfono tiene 9 cifras --> */}
           <a href="llamar" className={`llamar${llamando ? " off" : ""}${activoSiTiene9(numero)}`} onClick={llamarOColgar}>Llamar</a>
           {/*  <!-- Sólo se tiene que ver un botón u otro --> */}
