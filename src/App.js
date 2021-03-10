@@ -8,21 +8,25 @@ function App() {
 
   const llamarOColgar = (e) => {
     e.preventDefault();
-    e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
+    if (e.target.className.includes("llamar")) {
+      setLlamando(true);
+      setTimeout(() => setLlamando(false), 5000);
+    } else {
+      setLlamando(false);
+    }
   };
-
 
   const marcarNumero = () => {
     console.log("hola");
   };
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
-  const colgarAuto = useEffect(() => {
-    if (llamando === true) {
-      setTimeout(() => setLlamando(false), 5000);
-
-    }
-  }, [llamando]);
+  /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
+  /*  const colgarAuto = useEffect(() => {
+     if (llamando === true) {
+       setTimeout(() => setLlamando(false), 5000);
+     }
+   }, [llamando]); */
 
   return (
     <div className="contenedor">
