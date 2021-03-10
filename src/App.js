@@ -11,6 +11,12 @@ function App() {
     e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
   };
 
+  const colgarAuto = useEffect(() => {
+    if (llamando === true) {
+      setTimeout(() => setLlamando(false), 5000);
+    }
+  }, [llamando]);
+
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
