@@ -24,7 +24,6 @@ function App() {
     }
   }, [llamando]);
 
-
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
