@@ -5,7 +5,6 @@ const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 function App() {
   const [numeros, setNumeros] = useState(numerosApi);
   const [llamando, setLlamando] = useState(false);
-  let botonActivo;
 
   const llamarOColgar = (e) => {
     e.preventDefault();
