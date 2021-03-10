@@ -11,7 +11,7 @@ function App() {
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
-            {numeros.map(numero => <li><button>{numero}</button></li>)}
+            {numeros.map(numero => <li key={numero} className="numeros"><button>{numero}</button></li>)}
             <li><button className="big">borrar</button></li>
           </ol>
         </div>
