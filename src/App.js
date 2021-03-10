@@ -11,15 +11,23 @@ function App() {
     e.target.className.includes("llamar") ? setLlamando(true) : setLlamando(false);
   };
 
+
   const marcarNumero = () => {
-    console.log("jola");
+    console.log("hola");
   };
+
+
+  const colgarAuto = useEffect(() => {
+    if (llamando === true) {
+      setTimeout(() => setLlamando(false), 5000);
+    }
+  }, [llamando]);
 
 
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
-      <span className="mensaje">Llamando...</span>
+      <span className={`mensaje${llamando ? "" : " off"}`}>Llamando...</span>
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
