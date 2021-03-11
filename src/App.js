@@ -19,7 +19,8 @@ function App() {
 
   const marcarNumero = () => {
     console.log("hola");
-  
+  };
+
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
   /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
@@ -46,11 +47,12 @@ function App() {
         </div>
         <div className="acciones">
           <span className="numero">{numero}</span>
-    {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
+          {/*   <!-- El botón de llamar debe tener la clase "activo" cuando -->
                 <!-- el número de teléfono tiene 9 cifras --> */}
-          <a href="llamar" className={`llamar${llamando ? " off" : ""}${activoSiTiene9(numero)}`} onClick={llamarOColgar}>Llamar</a>
-          {/*  <!-- Sólo se tiene que ver un botón u otro --> */}
-          <a href="colgar" className={`colgar activo${llamando ? "" : " off"}`} onClick={llamarOColgar}>Colgar</a>
+          {llamando ?
+            <a href="colgar" className="colgar activo" onClick={llamarOColgar}>Colgar</a> :
+            <a href="llamar" className={`llamar${activoSiTiene9(numero)}`} onClick={llamarOColgar}>Llamar</a>
+          }
         </div>
       </main>
     </div >
@@ -59,3 +61,4 @@ function App() {
 
 
 export default App;
+
