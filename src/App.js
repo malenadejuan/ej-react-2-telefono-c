@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+let timer;
 
 const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
@@ -12,9 +13,10 @@ function App() {
     e.preventDefault();
     if (e.target.className.includes("llamar") && e.target.className.includes("activo")) {
       setLlamando(true);
-      setTimeout(() => setLlamando(false), 5000);
+      timer = setTimeout(() => setLlamando(false), 5000);
     } else {
       setLlamando(false);
+      clearTimeout(timer);
     }
   };
 
