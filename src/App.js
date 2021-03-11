@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 function App() {
-
-  // const [numeros, setNumeros] = useState(numerosApi);
   const [llamando, setLlamando] = useState(false);
   const [numero, setNumero] = useState("657295390");
 
@@ -26,19 +24,7 @@ function App() {
     setNumero(numero.slice(0, -1));
   };
 
-
-  /*   const marcarNumero = () => {
-      console.log("hola");
-    }; */
-
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
-
-  /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
-  /*  const colgarAuto = useEffect(() => {
-     if (llamando === true) {
-       setTimeout(() => setLlamando(false), 5000);
-     }
-   }, [llamando]); */
 
   return (
     <div className="contenedor">
@@ -50,10 +36,13 @@ function App() {
             {
               numerosApi.map(numero =>
                 <li key={numero} className="numeros">
+
                   <button disabled={llamando}>{numero}</button></li>)
             }
             <li><button onClick={borrarNumero} disabled={llamando} className="big">borrar</button></li>
-          </ol>
+                  <button disabled={llamando} onClick={() => marcarDigito(numero)}>{numero}</button></li>)
+            }
+           </ol>
         </div>
         <div className="acciones">
           <span className="numero">{numero}</span>
@@ -61,13 +50,14 @@ function App() {
                 <!-- el número de teléfono tiene 9 cifras --> */}
           {llamando ?
             <a href="colgar" className="colgar activo" onClick={llamarOColgar}>Colgar</a> :
-            <a href="llamar" className={`llamar${activoSiTiene9("234234234")}`} onClick={llamarOColgar}>Llamar</a>
+            <a href="llamar" className={`llamar${activoSiTiene9(numero)}`} onClick={llamarOColgar}>Llamar</a>
           }
-          {/*  <!-- Sólo se tiene que ver un botón u otro --> */}
         </div>
       </main>
     </div >
   );
 }
 
+
 export default App;
+
