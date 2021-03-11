@@ -23,13 +23,6 @@ function App() {
 
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
 
-  /*  Lo dejo porque quiero preguntar a Mario por que no hacerlo asi */
-  /*  const colgarAuto = useEffect(() => {
-     if (llamando === true) {
-       setTimeout(() => setLlamando(false), 5000);
-     }
-   }, [llamando]); */
-
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
