@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 const numerosApi = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 function App() {
-  const [numeros, setNumeros] = useState(numerosApi);
-
   const [llamando, setLlamando] = useState(false);
+  const [numero, setNumero] = useState("657295390");
+
 
   const llamarOColgar = (e) => {
     e.preventDefault();
@@ -17,8 +17,11 @@ function App() {
     }
   };
 
-  const marcarNumero = () => {
-    console.log("hola");
+
+
+
+  const borrarNumero = () => {
+    setNumero(numero.slice(0, -1));
   };
 
   const activoSiTiene9 = cifra => cifra.length === 9 ? " activo" : "";
@@ -31,12 +34,15 @@ function App() {
         <div className="botones">
           <ol className="teclado">
             {
-              numeros.map(numero =>
+              numerosApi.map(numero =>
                 <li key={numero} className="numeros">
+
+                  <button disabled={llamando}>{numero}</button></li>)
+            }
+            <li><button onClick={borrarNumero} disabled={llamando} className="big">borrar</button></li>
                   <button disabled={llamando} onClick={() => marcarDigito(numero)}>{numero}</button></li>)
             }
-            <li><button disabled={llamando} onClick={borraNumero} className="big">borrar</button></li>
-          </ol>
+           </ol>
         </div>
         <div className="acciones">
           <span className="numero">{numero}</span>
